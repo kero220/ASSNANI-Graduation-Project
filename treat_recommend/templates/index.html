@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assnani AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="brand">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/3004/3004415.png"
+          alt="Assnani Logo"
+          class="logo"
+        />
+        <h1>Assnani</h1>
+      </div>
+    </header>
+
+    <div class="card">
+      <div class="card-title">X-Ray Images</div>
+      <div class="upload-zone" id="upload-zone">
+        <input type="file" id="file-input" accept="image/*" multiple />
+        <div class="upload-icon">🦷</div>
+        <p><strong>Click to upload</strong> or drag & drop</p>
+        <p>Select multiple JPG, PNG, WEBP files</p>
+      </div>
+      <div id="preview-wrap" class="preview-grid"></div>
+
+      <div class="model-selection">
+        <label for="model-select">Select AI Model:</label>
+        <select id="model-select">
+          <option value="gemini-2.5-flash">
+            Gemini 2.5 Flash (Fastest / Recommended)
+          </option>
+          <option value="gemini-2.0-flash">Gemini 2.0 Flash</option>
+          <option value="gemini-1.5-flash">Gemini 1.5 Flash</option>
+          <option value="gemini-1.5-pro">
+            Gemini 1.5 Pro (Highly Capable but lower free quota)
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="error-box" id="error-box"></div>
+
+    <button class="run-btn" id="run-btn" onclick="run()" disabled>
+      ▶ Analyze All X-Rays
+    </button>
+
+    <div class="status" id="status">
+      <div class="spinner"></div>
+      <span id="status-text"
+        >Processing images... This might take a moment.</span
+      >
+    </div>
+
+    <div id="results-container"></div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>
